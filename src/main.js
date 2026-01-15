@@ -62,11 +62,11 @@ class WebSerialReceiptPrinter extends ReceiptPrinterDriver {
 		})
 
 		if (matches.length == 1) {
-			await this.#open(matches[0]);
+			await this.open(matches[0]);
 		}
 	}
 
-	async #open(port) {
+	async open(port) {
 		this.#port = port;
 		this.#state.closing = false;
 
