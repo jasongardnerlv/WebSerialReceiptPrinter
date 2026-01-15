@@ -41,7 +41,7 @@ class WebSerialReceiptPrinter extends ReceiptPrinterDriver {
 			let port = await navigator.serial.requestPort();
 			
 			if (port) {
-				await this.#open(port);
+				await this.open(port);
 			}
 		}
 		catch(error) {
