@@ -89,9 +89,12 @@ class WebSerialReceiptPrinter extends ReceiptPrinterDriver {
 		}
 
 		this.#state.closing = true;
-		this.#reader.cancel();
 
-		await this.#reader.closed;
+		if (this.#reader) {
+			this.#reader.cancel();
+			await this.#reader.closed;
+		}
+
 		await this.#port.close();
 
 		this.#port = null;
