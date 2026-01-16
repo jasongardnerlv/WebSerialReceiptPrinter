@@ -37,15 +37,12 @@ class WebSerialReceiptPrinter extends ReceiptPrinterDriver {
 	}
 
 	async connect() {
-		try {
-			let port = await navigator.serial.requestPort();
-			
-			if (port) {
-				await this.open(port);
-			}
-		}
-		catch(error) {
-			console.log('Could not connect! ' + error);
+		let port = await navigator.serial.requestPort();
+
+		if (port) {
+			await this.open(port);
+		} else {
+			throw new Error('Could not connect! No port available');
 		}
 	}
 
